@@ -7,14 +7,34 @@ Mirth Connect Adapter for Smart Connector
 After building Mirth Connect JARs (README.mirth) install them with lein
 localrepo
 
+The Mirth Jars can be downloaded at
+
+    wget http://maven.v3ctor.club/com/mirth/commons/encryption/mirth-crypto/1/mirth-crypto-1.jar
+    wget http://maven.v3ctor.club/com/mirth/connect/mirth-donkey/3.2.1svn/mirth-donkey-3.2.1svn.jar
+    wget http://maven.v3ctor.club/com/mirth/connect/mirth-server/3.2.1svn/mirth-server-3.2.1svn.jar
+    wget http://maven.v3ctor.club/com/mirth/connect/mirth-client/3.2.1svn/mirth-client-3.2.1svn.jar
+
+
+    lein clean
+    lein deps
     lein localrepo install ../lib/mirth/mirth-donkey-3.2.1svn.jar \
       com.mirth.connect/mirth-donkey 3.2.1svn
     lein localrepo install ../lib/mirth/mirth-server-3.2.1svn.jar \
       com.mirth.connect/mirth-server 3.2.1svn
     lein localrepo install ../lib/mirth/mirth-client-3.2.1svn.jar \
-      com.mirth.connect/mirth-client 3.2.1svn lein localrepo install \
-      ../../workspace.luna/Server/lib/mirth-crypto.jar \
-      com.mirth.commons.encryption lein deps
+      com.mirth.connect/mirth-client 3.2.1svn
+    lein localrepo install ../../lib/mirth/mirth-crypto-1.jar \
+      com.mirth.commons.encryption/mirth-crypto 1
+    lein deps
+
+
+### Examples
+
+
+    lein repl
+    (import [com.mirth.connect.client.core Client])
+    (doto (new com.mirth.connect.client.core.Client "server"))
+
 
 
 ### Bugs

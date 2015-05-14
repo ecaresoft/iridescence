@@ -1,4 +1,24 @@
-(defproject webui "0.1.0-SNAPSHOT"
+;;  HL7 YAMl converter
+;;  Copyright (C) 2015 eCaresoft Inc
+;;  Ernesto Angel Celis de la Fuente <developer@celisdelafuente.net>
+;;
+;;  This file is part of Iridescence Smart Connector
+;;
+;;  Iridescence Smart Connector is free software: you can redistribute it
+;;  under the terms of the GNU Affero General Public License as published by
+;;  the Free Software Foundation, either version 3 of the License, or (at
+;;  your option) any later version.
+;;
+;;  This program is distributed in the hope that it will be useful,
+;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;;  GNU Affero General Public License for more details.
+;;
+;;  You should have received a copy of the GNU Affero General Public License
+;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+(defproject webui "0.1.3-SNAPSHOT"
 
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
@@ -20,7 +40,11 @@
                  [prone "0.8.1"]
                  [ragtime "0.3.8"]
                  [yesql "0.5.0-rc1"]
-                 [com.h2database/h2 "1.4.182"]]
+                 [com.h2database/h2 "1.4.182"]
+                 [cheshire "5.4.0"]
+                 [hl7yaml "0.1.2-SNAPSHOT"]
+                 [clj-yaml "0.4.0"]
+                 [adapter-db "0.1.13-SNAPSHOT"]]
 
   :min-lein-version "2.0.0"
   :uberjar-name "webui.jar"
@@ -32,8 +56,8 @@
   :plugins [[lein-ring "0.9.1"]
             [lein-environ "1.0.0"]
             [lein-ancient "0.6.5"]
-            [ragtime/ragtime.lein "0.3.8"]]
-  
+            [ragtime/ragtime.lein "0.3.8"]
+            [codox "0.8.11"]]
 
   :ring {:handler webui.handler/app
          :init    webui.handler/init

@@ -19,8 +19,10 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var DataModel = function() {};
+var DataModel = function() {
+  DataModel.prototype.type = "GENERIC";
+  DataModel.prototype.id = null;
+  DataModel.prototype.name = null;
+  DataModel.prototype.url = null;
+}
 
-DataModel.prototype.type = "data";
-DataModel.prototype.name = null;
-DataModel.prototype.url = null;

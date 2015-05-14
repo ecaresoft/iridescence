@@ -1,5 +1,5 @@
 /**
- *   PostgreSQL data model
+ *   Iridescence Smart Connector Web UI RESTful Client
  *   Copyright (C) 2015 eCaresoft Inc
  *   Ernesto Angel Celis de la Fuente <developer@celisdelafuente.net>
  *
@@ -19,10 +19,24 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var PostgresModel = new DataModel();
+var get_objects = function(url) {
+  //console.log('Fetching objects...');
+  $.get("/api/adapter/object/",
+        {"__anti-forgery-token": $("#__anti-forgery-token").val(),
+        "url": url},
+        function(e) {
+          console.log(e);
+        }
+        );
+};
 
-PostgresModel.type = "postgres";
-PostgresModel.name = "pg" + $('#blk-id').val(); // TODO Decouple from view
-PostgresModel.url = "jdbc:postgresql://host:port/db";
-
-
+var test_connection = function (url) {
+  $.get("/api/adapter/test/",
+        {"__anti-forgery-token": $("#__anti-forgery-token").val(),
+          "url": url},
+       function(e) {
+        console.log('Adapter Test OK');
+       // get_objects(url);
+       }
+       );
+};
